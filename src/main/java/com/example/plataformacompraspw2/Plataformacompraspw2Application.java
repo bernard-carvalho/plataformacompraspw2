@@ -3,11 +3,17 @@ package com.example.plataformacompraspw2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.plataformacompraspw2.Entity.Produto;
+
+
+
 @SpringBootApplication
 public class Plataformacompraspw2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Plataformacompraspw2Application.class, args);
+		Produto produto = new Produto();
+		produto.set
 	}
 
 }
