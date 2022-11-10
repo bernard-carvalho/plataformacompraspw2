@@ -5,7 +5,6 @@ import javax.validation.ConstraintViolation;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.plataformacompraspw2.Entity.Produto;
 import com.example.plataformacompraspw2.Entity.Cliente.ClientePF;
 
 

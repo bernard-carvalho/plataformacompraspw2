@@ -24,6 +24,7 @@ public abstract class Cliente implements Serializable {
     private Long id;
 
     private String email;
+
     
     
 
