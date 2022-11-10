@@ -5,6 +5,9 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -22,7 +25,12 @@ public class Produto implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
     
+    @NotBlank(message = "NOME NÃO PODE ESTAR EM BRANCO")
+    @NotNull(message = "NOME NÃO PODE SER NULO")
     private String nome;
+    
+    @NotNull(message = "VALOR NÃO PODE SER NULO")
+    @Min(value=0, message="PRECO DEVE SER SUPERIOR A {1}")
     private Double valor;
 
     @Transient  
