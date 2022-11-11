@@ -6,7 +6,10 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.example.plataformacompraspw2.Entity.Cliente.Cliente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,6 +25,8 @@ import lombok.Data;
 
 @Data// notação do lombok.Data que permite que não precisemos informar getters e setters
 @Table(name = "tb_venda")
+@Scope(value=WebApplicationContext.SCOPE_SESSION)
+@Component
 @Entity//notação que identifica a classe como entidade, isto é, uma tabela deve ser criada no banco para representá-la
 public class Venda implements Serializable {
     @Id
