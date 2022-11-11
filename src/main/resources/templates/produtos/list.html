@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    LIST.HTML
+    PRODUTOS/LIST.html
+    <br>
+    <div th:each="produto : ${produtos}" style="background:red;display: inline-block;width:300px;">
+        <p th:text="${produto.nome}">Nome</p>
+        <p th:text="'R$'+${produto.valor}">Nome</p>
+    </div>
+
 </body>
 </html>
