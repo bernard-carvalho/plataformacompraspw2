@@ -5,6 +5,7 @@ import javax.validation.ConstraintViolation;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.plataformacompraspw2.Entity.Produto;
 import com.example.plataformacompraspw2.Entity.Cliente.ClientePF;
 
 
@@ -15,9 +16,9 @@ public class Plataformacompraspw2Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Plataformacompraspw2Application.class, args);
 		
-		ClientePF clientepf = new ClientePF();
+		Produto clientepf = new Produto();
 		clientepf.isValid();
-		for(ConstraintViolation<ClientePF> violacao : clientepf.getErros()){
+		for(ConstraintViolation<Produto> violacao : clientepf.getErros()){
 			System.out.println(violacao);
 		}
 		System.out.println(clientepf.getId());

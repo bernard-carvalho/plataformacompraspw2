@@ -5,7 +5,11 @@ import javax.validation.constraints.Email;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.example.plataformacompraspw2.Entity.Venda;
+
 import java.io.Serializable;
+import java.util.List;
+
 import lombok.Data;
 
 
@@ -19,6 +23,9 @@ public abstract class Cliente implements Serializable {
     @GenericGenerator(name = "inc", strategy = "increment")
     @Column(name = "id", nullable = false)
     private Long id;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Venda> vendas;
 
     @Email
     private String email;

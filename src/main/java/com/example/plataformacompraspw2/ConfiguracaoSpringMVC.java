@@ -16,12 +16,9 @@ public class ConfiguracaoSpringMVC implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry){
-        //List<Produto> produtos = produtoRepository.findAll();
-        /*
-         * Verificar uma forma de enviar a /home um list<Produto>.
-        */
-        registry.addRedirectViewController("/", "/home");
-        //registry.addViewController("/").setViewName("index");
+        registry.addRedirectViewController("/", "/produtos/list");
+        //registry.addRedirectViewController("/", "/home");
+        //registry.addRedirectViewController("/home", "/produtos/list");
         registry.addViewController("/home").setViewName("index");
     }
 }
