@@ -15,12 +15,14 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
 @Entity //notação que identifica a classe como entidade, isto é, uma tabela deve ser criada no banco para representá-la
 @Data // notação do lombok.Data que permite que não precisemos informar getters e setters
-@Table(name="tb_item_venda") //notação opcional que informa o nome da tabela a ser criada
+@Table(name="tb_item_venda") // notação opcional que informa o nome da tabela a ser criada
 public class ItemVenda implements Serializable {
     /*######################################
     * ATRIBUTOS
@@ -30,12 +32,15 @@ public class ItemVenda implements Serializable {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
+        @Min(value=0, message = "PREÇO NÃO PODE SER NEGATIVO")
         private Double precoUnitario;
 
+        @Min(value = 1, message = "QUANTIDADE NÃO PODE SER INFERIOR A 1")
         private Integer quantidade;
 
         @OneToOne
         @JoinColumn(name="cod_produto")
+        @NotNull(message = "PRODUTO INEXISTENTE")
         private Produto produto;
 
         @Transient
@@ -45,9 +50,10 @@ public class ItemVenda implements Serializable {
             ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
             Validator validator = factory.getValidator();
             erros = validator.validate(this);
-            if(erros.size()!=0)
-                return false;
-            else
-                return true;
+            return erros.isEmpty();
+        }
+
+        public Double getValorItem(){
+            return precoUnitario*quantidade;
         }
 }

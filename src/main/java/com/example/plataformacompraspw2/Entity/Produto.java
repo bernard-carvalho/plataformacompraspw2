@@ -16,9 +16,9 @@ import lombok.Data;
 
 
 
-@Data
-@Table(name = "Produto")
-@Entity
+@Data// notação do lombok.Data que permite que não precisemos informar getters e setters
+@Table(name = "tb_produto")
+@Entity//notação que identifica a classe como entidade, isto é, uma tabela deve ser criada no banco para representá-la
 public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,10 +40,7 @@ public class Produto implements Serializable {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         erros = validator.validate(this);
-        if(erros.size()!=0)
-            return false;
-        else
-            return true;
+        return erros.isEmpty();
     }
 
 }
